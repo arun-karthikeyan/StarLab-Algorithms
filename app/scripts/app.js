@@ -1,6 +1,6 @@
 'use strict';
 $(document).ready(function(){
-  var transitionTime = 1000;
+  var transitionTime = 500;
   var maxIterations = 10;
   var text = ['Setting up initial model parameters...', 'Starting Model Training...'];
   var iterConst = 'iteration ';
@@ -25,6 +25,7 @@ $(document).ready(function(){
         });
       }else{
         $('#test-results').fadeTo(transitionTime,1);
+        $('#export-btn').fadeTo(transitionTime,1);
       }
     });
   }
