@@ -39,6 +39,17 @@ angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers'])
     }
   })
 
+  //route for birad sample Page
+  .state('starlab.birad.sample', {
+    url: '/sample',
+    views: {
+      'content@': {
+        templateUrl: 'views/birad_sample.html',
+        controller: 'BiradSampleController'
+      }
+    }
+  })
+
   //route for the biradK Page
   .state('starlab.biradk', {
     url: 'biradk',
