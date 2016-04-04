@@ -240,6 +240,11 @@ $('#timeSeries0-it10').highcharts({
 
   }]
 });
+//adding functions to trigger the modal on click of re-run algorithm
+$('#rerun-alg').click(function(){
+    $('#rerun-options-modal').modal('toggle');
+});
+
 }])
 
 .controller('BiradkController', ['$scope', function($scope){
