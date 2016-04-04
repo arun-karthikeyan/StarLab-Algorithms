@@ -67,7 +67,7 @@ gulp.task('clean', ['jshint'], function(){
 
 //Gulp usemin task - second method as described in the docs
 gulp.task('usemin', function(){
-  return gulp.src('app/*.html')
+  return gulp.src('{app/*.html,app/views/*.html}')
   .pipe(usemin({
     css: [function() {return cleancss({
       keepSpecialComments: 0
