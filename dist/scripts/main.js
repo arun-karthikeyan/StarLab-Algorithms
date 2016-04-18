@@ -823,6 +823,10 @@ angular.module('starlab.controllers', [])
 
 }])
 
+.controller('AboutController', ['$scope', function($scope){
+
+}])
+
 .controller('BiradTrainController', ['$scope', function($scope){
   var transitionTime = 500;
   var maxIterations = 10;
@@ -854,16 +858,6 @@ angular.module('starlab.controllers', [])
     });
   }
   transitionText(0);
-
-  // function display_dt_1(){
-  //   $('#dataset-desc-2').css('display','none');
-  //   $('#dataset-desc-1').css('display','');
-  // }
-  //
-  // function display_dt_2(){
-  //   $('#dataset-desc-1').css('display','none');
-  //   $('#dataset-desc-2').css('display','');
-  // }
 }])
 
 .controller('BiradSampleController', ['$scope', function($scope){
