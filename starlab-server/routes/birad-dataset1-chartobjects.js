@@ -63,7 +63,10 @@ for(var iteration=0, iterLen=data.maxIterations;iteration<iterLen; ++iteration)
       }
       data.iterData[iteration].shortData[timeSeries].push(binLabel);
       data.iterData[iteration].chartDataShort[timeSeries].push(getChartFormatDataWithDrilldown(binLabel,trueBinLabel,data.iterData[iteration].chartDataShort[timeSeries].length));
-      data.iterData[iteration].chartDataDrilldown[timeSeries].push(currentSlot);
+      if(binLabel!=trueBinLabel){
+        var drilldownObj = {id: (data.iterData[iteration].chartDataShort[timeSeries].length-1), data: currentSlot};
+        data.iterData[iteration].chartDataDrilldown[timeSeries].push(drilldownObj);
+      }
     }
   }
 }
@@ -81,7 +84,17 @@ var chartObjects = {
     colors: ['#f2885f', '#434348', '#90ed7d', '#f7a35c', '#8085e9',
     '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1'],
     title: {
-      text: 'F-Score Vs Iterations'
+      text: 'Progressive F-Score'
+    },
+    xAxis: {
+      title: {
+        text: 'Iterations'
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'score'
+      }
     },
 
     series: [{
@@ -123,7 +136,10 @@ for(var iteration=0, iterLen=data.maxIterations;iteration<iterLen; ++iteration)
 
     sampleChartObj.plotOptions = {
       spline: {
-        enableMouseTracking: true
+        enableMouseTracking: true,
+        animation: {
+          duration: 1000
+        }
       }
     };
 
@@ -163,10 +179,10 @@ for(var iteration=0, iterLen=data.maxIterations;iteration<iterLen; ++iteration)
       series: []
     }
 
-    for(var slot=0;slot<maxSlots;++slot){
+    for(var slot=0, slotLen=data.iterData[iteration].chartDataDrilldown[timeSeries].length;slot<slotLen;++slot){
       var currentDrilldown = {};
-      currentDrilldown.id = 'drill'.concat(slot);
-      currentDrilldown.data = data.iterData[iteration].chartDataDrilldown[slot];
+      currentDrilldown.id = 'drill'.concat(data.iterData[iteration].chartDataDrilldown[timeSeries][slot].id);
+      currentDrilldown.data = data.iterData[iteration].chartDataDrilldown[timeSeries][slot].data;
       currentDrilldown.type = 'spline';
       sampleChartObj.drilldown.series.push(currentDrilldown);
     }

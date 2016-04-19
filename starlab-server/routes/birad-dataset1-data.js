@@ -1,5 +1,5 @@
 module.exports.data = {
-  maxIterations: 10, 
+  maxIterations: 10,
   maxTimeseries: 10,
   maxTimestamps: 1439,
   f1Score: [

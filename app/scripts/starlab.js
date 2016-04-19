@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers'])
+angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers', 'starlab.services'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
   //route for the home page
