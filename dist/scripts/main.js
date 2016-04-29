@@ -838,7 +838,8 @@ angular.module('starlab.controllers', ['starlab.services'])
 }])
 
 .controller('BiradController', ['$scope', function($scope){
-
+//setting default select value
+$scope.dataSel = '0';
 }])
 
 .controller('AboutController', ['$scope', function($scope){
@@ -879,8 +880,15 @@ angular.module('starlab.controllers', ['starlab.services'])
 }])
 
 .controller('BiradSampleController', ['$scope', 'biradFactory', '$timeout', function($scope, biradFactory, $timeout){
+  $scope.minIteration = 0;
+  $scope.maxIteration = 10;
+  $scope.cleanseF1Score = function(startIteration){
+    for(var i=startIteration; i<$scope.maxIteration; ++i){
+      $('#f1score').highcharts().series[0].data[i].update(null);
+    }
+  };
 
-  function populateCharts(iteration, end){
+  $scope.populateCharts = function(iteration, end){
     console.log('Populated Charts for Iteration: '+iteration);
     $('#f1score').highcharts().series[0].data[iteration].update(chartObjects.f1Score[iteration], true, {duration: 1000});
     //populating timeSeries charts
@@ -895,16 +903,16 @@ angular.module('starlab.controllers', ['starlab.services'])
     $('#timeSeries8').highcharts(chartObjects.timeSeriesCharts[iteration][8]);
     $('#timeSeries9').highcharts(chartObjects.timeSeriesCharts[iteration][9]);
     if(iteration<(end-1)){
-      $timeout(populateCharts, 1500, true, iteration+1,end);
+      $timeout($scope.populateCharts, 1500, true, iteration+1,end);
     }
-  }
+  };
 
   var chartObjects = biradFactory.getChartObject().get().$promise.then(
     function(response){
       chartObjects = response;
       //populating F1Score
       $('#f1score').highcharts(chartObjects.f1ScoreBaseChartObj);
-      populateCharts(0, 10);
+      $scope.populateCharts($scope.minIteration, $scope.maxIteration);
     }, function(response){
       console.log('Error: ', response);
     });
@@ -915,7 +923,11 @@ angular.module('starlab.controllers', ['starlab.services'])
       $('#rerun-options-modal').modal('toggle');
     });
 
-
+    $scope.restartChart = function(){
+      $('#rerun-options-modal').modal('hide');
+      $scope.cleanseF1Score($scope.rerunAlg.start);
+      $scope.populateCharts($scope.rerunAlg.start, $scope.rerunAlg.end);
+    };
 
   }])
 
@@ -933,7 +945,7 @@ angular.module('starlab.controllers', ['starlab.services'])
 
 'use strict';
 angular.module('starlab.services', [])
-.constant('baseURL', 'http://localhost:3000/')
+.constant('baseURL', 'http://192.168.0.11:3000/')
 .factory('biradFactory', ['$resource', 'baseURL', function($resource, baseURL){
   var biradFac = {};
   biradFac.getChartObject = function(){

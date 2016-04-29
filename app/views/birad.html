@@ -15,10 +15,10 @@
             </label>
           </div>
           <div class="col-sm-3 col-sm-offset-1">
-            <select id="dataSel" name="dataSel" class="form-control">
-              <option selected="selected"></option>
-              <option id="dataset1" >Dataset 1</option>
-              <option id="dataset2" >Dataset 2</option>
+            <select id="dataSel" name="dataSel" class="form-control" ng-model="dataSel">
+              <option id="dataset0" value="0" selected="selected">Select</option>
+              <option id="dataset1" value="1">Dataset 1</option>
+              <option id="dataset2" value="2">Dataset 2</option>
             </select>
           </div>
           <div class="col-xs-12 col-sm-3">
@@ -34,8 +34,10 @@
           </div>
         </div>
         <div id="dataset-desc">
-
-          <div id="dataset-desc-1" class="well" style="display:;">
+          <div id='dataset-desc-0' class='well' ng-if="dataSel==0">
+            <h3>Please select a Dataset</h3>
+          </div>
+          <div id="dataset-desc-1" class="well" ng-if="dataSel==1">
 
             <h3>This Dataset contains real and synthetic time-series with labeled anomalies.</h3>
             <p>The synthetic data set contains time-series with random seasonality, trend and noise. </p>
@@ -62,7 +64,7 @@
                 <li>5,45,1</li>
               </ul>
             </div>
-            <div id="dataset-desc-2" class="well" style="display:none;">
+            <div id="dataset-desc-2" class="well" ng-if="dataSel==2">
               <h3>This Dataset contain synthetic time-series.</h3>
               <p>The A3Benchmark only contains outliers while the A4Benchmark also contains the anomalies
                 that are marked as change-points.</p>

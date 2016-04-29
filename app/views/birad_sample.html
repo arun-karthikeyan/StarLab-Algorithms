@@ -6,17 +6,17 @@
         <h3 class="modal-title"><span style="color: black">Re-Run Algorithm</span></h3>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" role="forms">
+        <form class="form-horizontal" role="forms" ng-submit='restartChart()'>
           <div class="form-group">
             <div class="col-sm-6 col-xs-12">
               <div class="input-group">
                 <span class="input-group-addon glyphicon glyphicon-hand-right"></span>
-                <input class="form-control" type="text" placeholder="Enter Start Iteration">
+                <input class="form-control" type="number" placeholder="Enter Start Iteration" ng-model='rerunAlg.start' required min='{{minIteration}}'>
               </div>
             </div>
             <div class="col-sm-6 col-xs-12">
               <div class="input-group">
-                <input class="form-control" type="text" placeholder="Enter End Iteration">
+                <input class="form-control" type="number" placeholder="Enter End Iteration" ng-model='rerunAlg.end' required max='{{maxIteration}}'>
                 <span class="input-group-addon glyphicon glyphicon-hand-left"></span>
               </div>
             </div>
@@ -100,7 +100,7 @@
           <a type="button" id="rerun-alg" class="btn btn-primary">Re-Run Algorithm</a>
         </div>
         <div class="col-sm-6" style="text-align: center;">
-          <a type="button" class="btn btn-primary">Try Another Algorithm</a>
+          <a type="button" id='try-another-dataset' ui-sref='starlab.birad' class="btn btn-primary">Try Another Dataset</a>
         </div>
       </div>
     </form>
