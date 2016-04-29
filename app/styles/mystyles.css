@@ -26,10 +26,12 @@ body {
 .jumbotron {
   margin: 0px auto;
   padding: 70px 30px;
-  background-image: url('../images/cover.jpg');
-  background-size: cover;
+  background-image: url('../images/rare.png');
+  background-size: contain;
   background-repeat: no-repeat;
   background-clip: padding-box;
+  background-color: #99d6ff;
+  background-position: 80% 10%;
 }
 .inverse-dropdown{
   background: black;
