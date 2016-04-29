@@ -26,12 +26,14 @@ body {
 .jumbotron {
   margin: 0px auto;
   padding: 70px 30px;
-  background-image: url('../images/rare.png');
+  background-color: #5FACB6;
+  background-image: url('../images/rare.png'), linear-gradient(to bottom right, #5FACB6,  #dcedef);
   background-size: contain;
   background-repeat: no-repeat;
   background-clip: padding-box;
-  background-color: #99d6ff;
-  background-position: 80% 10%;
+
+  background-position: 80% center;
+  background-blend-mode: luminosity;
 }
 .inverse-dropdown{
   background: black;
