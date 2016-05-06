@@ -882,6 +882,11 @@ $scope.dataSel = '0';
 .controller('BiradSampleController', ['$scope', 'biradFactory', '$timeout', function($scope, biradFactory, $timeout){
   $scope.minIteration = 0;
   $scope.maxIteration = 10;
+  $scope.currentIteration = 0;
+  $scope.animation = {};
+  $scope.animation.togglePlay = true;
+  $scope.animation.toggleRestart = false;
+
   $scope.cleanseF1Score = function(startIteration){
     for(var i=startIteration; i<$scope.maxIteration; ++i){
       $('#f1score').highcharts().series[0].data[i].update(null);
@@ -889,6 +894,7 @@ $scope.dataSel = '0';
   };
 
   $scope.populateCharts = function(iteration, end){
+    $scope.currentIteration = iteration;
     console.log('Populated Charts for Iteration: '+iteration);
     $('#f1score').highcharts().series[0].data[iteration].update(chartObjects.f1Score[iteration], true, {duration: 1000});
     //populating timeSeries charts
@@ -902,7 +908,7 @@ $scope.dataSel = '0';
     $('#timeSeries7').highcharts(chartObjects.timeSeriesCharts[iteration][7]);
     $('#timeSeries8').highcharts(chartObjects.timeSeriesCharts[iteration][8]);
     $('#timeSeries9').highcharts(chartObjects.timeSeriesCharts[iteration][9]);
-    if(iteration<(end-1)){
+    if(iteration<(end-1) && $scope.animation.togglePlay && !$scope.animation.toggleRestart){
       $timeout($scope.populateCharts, 1500, true, iteration+1,end);
     }
   };
@@ -923,12 +929,31 @@ $scope.dataSel = '0';
       $('#rerun-options-modal').modal('toggle');
     });
 
+    $scope.playChart = function(){
+      if(!$scope.animation.togglePlay){
+        $scope.animation.togglePlay = true;
+      $scope.populateCharts($scope.currentIteration + 1, $scope.maxIteration);
+    }else{
+      $scope.animation.togglePlay = false;
+    }
+  };
+
+  $scope.restartAnimation = function(){
+    if($scope.animation.toggleRestart){
+      $scope.animation.toggleRestart = false;
+      $scope.populateCharts($scope.minIteration, $scope.maxIteration);
+    }else{
+      $scope.animation.toggleRestart = true;
+      $scope.currentIteration = $scope.minIteration;
+      $scope.cleanseF1Score($scope.minIteration);
+    }
+  };
+
     $scope.restartChart = function(){
       $('#rerun-options-modal').modal('hide');
       $scope.cleanseF1Score($scope.rerunAlg.start);
       $scope.populateCharts($scope.rerunAlg.start, $scope.rerunAlg.end);
     };
-
   }])
 
   .controller('BiradkController', ['$scope', function($scope){
@@ -945,7 +970,7 @@ $scope.dataSel = '0';
 
 'use strict';
 angular.module('starlab.services', [])
-.constant('baseURL', 'http://192.168.0.11:3000/')
+.constant('baseURL', 'http://10.143.14.137:3000/')
 .factory('biradFactory', ['$resource', 'baseURL', function($resource, baseURL){
   var biradFac = {};
   biradFac.getChartObject = function(){

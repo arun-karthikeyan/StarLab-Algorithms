@@ -40,6 +40,14 @@
     <div class="col-xs-12">
       <div id="f1score" style="height: 400px; margin: 0 auto"></div>
     </div>
+    <div class="pull-right col-xs-7" >
+      <div class="btn-group btn-block row" role="group" aria-label="contol-buttons">
+        <button type="button" class="btn btn-info col-xs-1"><span class="glyphicon glyphicon-backward"></span></button>
+        <button type="button" class="btn btn-info col-xs-1" ng-click="playChart();"><span ng-class="{'glyphicon glyphicon-pause':animation.togglePlay, 'glyphicon glyphicon-play':!animation.togglePlay}"></span></button>
+        <button type="button" class="btn btn-info col-xs-1" ng-click="restartAnimation();"><span ng-class="{'glyphicon glyphicon-stop':!animation.toggleRestart, 'glyphicon glyphicon-repeat':animation.toggleRestart}"></span></button>
+        <button type="button" class="btn btn-info col-xs-1"><span class="glyphicon glyphicon-forward"></span></button>
+      </div>
+    </div>
   </div>
   <div class="row row-content">
     <div class="col-xs-12">
