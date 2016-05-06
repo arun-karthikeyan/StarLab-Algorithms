@@ -1,34 +1,34 @@
 {
-    "name": "portfolio-website",
-    "description": "Arun Karthikeyan's Portfolio website",
-    "main": "index.html",
-    "authors": [
-        "Arun Karthikeyan"
-    ],
-    "license": "ISC",
-    "keywords": [
-        "Portfolio",
-        "Profile",
-        "Arun",
-        "Karthikeyan",
-        "Website"
-    ],
-    "homepage": "https://github.com/the3drevolution/Portfolio-Website",
-    "moduleType": [],
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap": "^3.3.6"
-    },
-    "devDependencies": {
-        "angular": "^1.5.3",
-        "angular-ui-router": "^0.2.18",
-        "angular-resource": "^1.5.3",
-        "highcharts": "^4.2.3"
-    }
+  "name": "portfolio-website",
+  "description": "Arun Karthikeyan's Portfolio website",
+  "main": "index.html",
+  "authors": [
+    "Arun Karthikeyan"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Portfolio",
+    "Profile",
+    "Arun",
+    "Karthikeyan",
+    "Website"
+  ],
+  "homepage": "https://github.com/the3drevolution/Portfolio-Website",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
+    "angular-resource": "^1.5.3",
+    "highcharts": "^4.2.3",
+    "font-awesome": "fontawesome#^4.6.2"
+  },
+  "devDependencies": {}
 }

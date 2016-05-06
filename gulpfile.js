@@ -89,8 +89,8 @@ gulp.task('usemin', function(){
   //Gulp copy fonts task - add new font-dependencies here
   gulp.task('copyfonts', function(){
     //bootstrap fonts
-    var bootstrap_stream = gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*').pipe(gulp.dest('./dist/fonts'));
-    var fontawesome_stream = gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*').pipe(gulp.dest('./dist/fonts'));
+    var bootstrap_stream = gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eot,svg}*').pipe(gulp.dest('./dist/fonts'));
+    var fontawesome_stream = gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eot,svg}*').pipe(gulp.dest('./dist/fonts'));
     return merge(bootstrap_stream, fontawesome_stream);
   });
 
