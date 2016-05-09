@@ -11,7 +11,7 @@ var shortDataProp = {
 function getIncorrectMarker(yVal){
   var markerProp = {
     enabled: true,
-    symbol: 'url(http://cs624430.vk.me/v624430251/235/e8I-P96dbIM.jpg)',
+    symbol: 'url(http://www.cottonafrica.com/images/cross.gif)',
     height: 10,
     width: 10
   }
@@ -19,18 +19,20 @@ function getIncorrectMarker(yVal){
   return {y: yVal, marker: markerProp};
 }
 
-function getChartFormatData(pred, truth){
+function getChartFormatData(pred, truth, yVal){
   if(pred==truth){
-    return pred;
+    return yVal;
   }
-  return getIncorrectMarker(pred);
+  return getIncorrectMarker(yVal);
 }
 
-function getChartFormatDataWithDrilldown(pred, truth, slot){
+function getChartFormatDataWithDrilldown(pred, truth, slot, yVal){
   if(pred==truth){
-    return pred;
+    // return pred;
+    return yVal;
   }
-  var incorrectMarker = getIncorrectMarker(pred);
+  // var incorrectMarker = getIncorrectMarker(pred);
+  var incorrectMarker = getIncorrectMarker(yVal);
   incorrectMarker.drilldown = 'drill'.concat(slot);
   return incorrectMarker;
 }
@@ -54,15 +56,20 @@ for(var iteration=0, iterLen=data.maxIterations;iteration<iterLen; ++iteration)
       var binLabel = 0;
       var trueBinLabel = 0;
       var currentSlot = [];
+      var sumOfSlot = 0, countOfSlot = 0;
       for(var j=0, jLen=((data.iterData[iteration].chartDataShort[timeSeries].length>=shortDataProp.plusOneBinSizeStart)?(shortDataProp.initialBinSize+1):shortDataProp.initialBinSize); j<jLen; ++j, ++i){
         var predLabel =  data.iterData[iteration].longData[timeSeries].timeSeriesData[i];
         var trueLabel = data.trueLabels[timeSeries].timeSeriesLabel[i];
         binLabel = binLabel | predLabel;
         trueBinLabel = trueBinLabel | trueLabel;
-        currentSlot.push(getChartFormatData(predLabel,trueLabel));
+        currentSlot.push(getChartFormatData(predLabel,trueLabel, data.actualData[timeSeries][i]));
+        //newly added
+        sumOfSlot = sumOfSlot + data.actualData[timeSeries][i];
+        countOfSlot += 1;
       }
       data.iterData[iteration].shortData[timeSeries].push(binLabel);
-      data.iterData[iteration].chartDataShort[timeSeries].push(getChartFormatDataWithDrilldown(binLabel,trueBinLabel,data.iterData[iteration].chartDataShort[timeSeries].length));
+      // data.iterData[iteration].shortData[timeSeries].push(sumOfSlot/countOfSlot);
+      data.iterData[iteration].chartDataShort[timeSeries].push(getChartFormatDataWithDrilldown(binLabel,trueBinLabel,data.iterData[iteration].chartDataShort[timeSeries].length,(sumOfSlot/countOfSlot)));
       if(binLabel!=trueBinLabel){
         var drilldownObj = {id: (data.iterData[iteration].chartDataShort[timeSeries].length-1), data: currentSlot};
         data.iterData[iteration].chartDataDrilldown[timeSeries].push(drilldownObj);
