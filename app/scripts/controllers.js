@@ -135,4 +135,8 @@ $scope.dataSel = '0';
 
   .controller('TeamController', ['$scope', function($scope){
 
+  }])
+
+  .controller('PublicationsController', ['$scope', function($scope){
+
   }]);

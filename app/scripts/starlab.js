@@ -92,6 +92,17 @@ angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers', 
        controller: 'AboutController'
      }
    }
+ })
+
+ // route for the publications page
+ .state('starlab.publications', {
+   url: 'publications',
+   views: {
+     'content@': {
+       templateUrl: 'views/publications.html',
+       controller: 'PublicationsController'
+     }
+   }
  });
 
   $urlRouterProvider.otherwise('/');

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('starlab.services', [])
-.constant('baseURL', 'http://192.168.0.11:3000/')
+.constant('baseURL', '/')
 .factory('biradFactory', ['$resource', 'baseURL', function($resource, baseURL){
   var biradFac = {};
   biradFac.getChartObject = function(){
