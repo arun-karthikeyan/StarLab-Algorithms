@@ -25,7 +25,7 @@ var runsequence = require('run-sequence').use(gulp);
 
 //Gulp JS Hint task - JS Hint must run synchronously before clean, so if there is any error it has to stop right there
 gulp.task('jshint', function(){
-  return gulp.src('app/scripts/**/*.js')
+  return gulp.src('app/scripts/*.js')
   .pipe(jshint('.jshintrc'))
   .pipe(jshint.reporter(stylish));
 });
@@ -72,11 +72,13 @@ gulp.task('usemin', function(){
     css: [function() {return cleancss({
       keepSpecialComments: 0
     });},rev, 'concat'],
+
     // with uglify
     // js: [gulpngannonate, function() {
     //   return uglify({
     //     mangle: true
     //   });}, rev, 'concat'],
+
     //no uglify - for debugging purposes
     js: [gulpngannonate, rev, 'concat'],
       html: [ function() {return htmlmin({
@@ -108,7 +110,7 @@ gulp.task('usemin', function(){
   //Gulp watch task - needs browser-sync pre-req because watch enforces reload
   gulp.task('watch', ['browser-sync'], function(){
     //watching javascript, css and html files and run usemin on change and reload browser to load new changes
-    gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['update-distribution-usemin', reload]);
+    gulp.watch('{app/scripts/*.js,app/styles/**/*.css,app/**/*.html}', ['update-distribution-usemin', reload]);
     //watching image files and run imagemin on change and reload browser to load new changes
     gulp.watch('app/images/**/*', ['imagemin', reload]);
   });

@@ -12,21 +12,42 @@
       <ul class="nav navbar-nav">
         <li><a ui-sref="starlab">Home</a></li>
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Research <span class="caret"></span></a>
-          <ul class="dropdown-menu inverse-dropdown">
-            <li class="dropdown-header">Static Data</a></li>
+          <ul class="dropdown-menu inverse-dropdown inverse-dropdown-subheading">
+            <li class="dropdown-header">Static Data</li>
               <li>
-                <a href>Single View Data</a>
+                <span class="subheading">Single View Data</span>
+
               </li>
               <li>
-                <a href>Multi View Data</a>
+                <span class="subheading">Multi View Data</span>
               </li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Dynamic Data</li>
             <li>
-              <a href>TimeSeries Data</a>
+              <div class="subheading">
+              <span>Time Series Data</span>
+              <ul>
+                <li>
+                  <a ui-sref="starlab.birad">BIRAD</a>
+                </li>
+                <li>
+                  <a ui-sref="starlab.biradk">BIRAD-K</a>
+                </li>
+              </ul>
+              </div>
             </li>
             <li>
-              <a href>Time-Evolving Graphs Data</a>
+              <div class="subheading">
+              <span>Time Evolving Graphs Data</span>
+              <ul>
+                <li>
+                  <a ui-sref="starlab.sird">SIRD</a>
+                </li>
+                <li>
+                  <a ui-sref="starlab.bird">BIRD</a>
+                </li>
+              </ul>
+              </div>
             </li>
           </ul>
         </li>

@@ -67,3 +67,59 @@ body {
 .dropdown-header{
   font-size: 15px;
 }
+
+.inverse-dropdown-subheading {
+  color: #ffffff;
+}
+
+.dropdown-menu .subheading {
+  /*text-decoration: underline;*/
+  padding: 3px 20px;
+  clear: both;
+  white-space: nowrap;
+}
+.dropdown-menu .subheading ul{
+  display: none;
+}
+.dropdown-menu .subheading:hover ul{
+  display: block;
+}
+.dropdown-menu .subheading:hover span{
+  text-decoration: underline;
+}
+
+.inverse-dropdown a{
+  color: #ffffff;
+}
+
+/*sird graph viz styles - START*/
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.node-active{
+  stroke: #555;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #555;
+  stroke-opacity: .3;
+}
+
+.link-active {
+  stroke-opacity: 1;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+#map{
+    border: 2px #555 dashed;
+    width:1200px;
+    height:800px;
+}
+/*sird graph viz styles - END*/

@@ -61,6 +61,39 @@ angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers', 
     }
   })
 
+  //route for the sird page
+  .state('starlab.sird', {
+    url: 'sird',
+    views: {
+      'content@': {
+        templateUrl: 'views/sird.html',
+        controller: 'SirdController'
+      }
+    }
+  })
+
+  //route for the sird-run page
+  .state('starlab.sird.run', {
+    url: '/run',
+    views: {
+      'content@': {
+        templateUrl: 'views/sird-run.html',
+        controller: 'SirdRunController'
+      }
+    }
+  })
+
+  //route for the bird page
+  .state('starlab.bird', {
+    url: 'bird',
+    views: {
+      'content@': {
+        templateUrl: 'views/bird.html',
+        controller: 'BirdController'
+      }
+    }
+  })
+
   //route for the contact page
   .state('starlab.contact', {
     url: 'contact',
