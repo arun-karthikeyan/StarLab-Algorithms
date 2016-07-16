@@ -59,3 +59,11 @@ body {
 .navbar-header {
   min-height: 70px;
 }
+
+.dropdown-menu .divider{
+  height: 1.1px;
+}
+
+.dropdown-header{
+  font-size: 15px;
+}
