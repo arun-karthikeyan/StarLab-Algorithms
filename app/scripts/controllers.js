@@ -140,15 +140,15 @@ angular.module('starlab.controllers', ['starlab.services'])
 
 }])
 
-.controller('BirdController', ['$scope', function($scope) {
+.controller('SirdController', ['$scope', function($scope) {
 
 }])
 
-.controller('SirdController', ['$scope', function($scope) {
+.controller('BirdController', ['$scope', function($scope) {
     $scope.dataSel = '0';
 }])
 
-.controller('SirdRunController', ['$scope', 'sirdFactory', function($scope, sirdFactory) {
+.controller('BirdRunController', ['$scope', 'sirdFactory', function($scope, sirdFactory) {
 
     var graph = sirdFactory.graph;
 

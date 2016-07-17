@@ -73,12 +73,12 @@ angular.module('starlabApp', ['ui.router', 'ngResource', 'starlab.controllers', 
   })
 
   //route for the sird-run page
-  .state('starlab.sird.run', {
+  .state('starlab.bird.run', {
     url: '/run',
     views: {
       'content@': {
-        templateUrl: 'views/sird-run.html',
-        controller: 'SirdRunController'
+        templateUrl: 'views/bird-run.html',
+        controller: 'BirdRunController'
       }
     }
   })
