@@ -92,7 +92,7 @@ body {
   color: #ffffff;
 }
 
-/*sird graph viz styles - START*/
+/*bird graph viz styles - START*/
 .node {
   stroke: #fff;
   stroke-width: 1.5px;
@@ -120,6 +120,6 @@ body {
 #map{
     border: 2px #555 dashed;
     width:1200px;
-    height:800px;
+    height:1000px;
 }
-/*sird graph viz styles - END*/
+/*bird graph viz styles - END*/
